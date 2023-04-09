@@ -50,7 +50,7 @@ const postReview = review => {
     let likeCounter = '';
 
     if(review.hasOwnProperty('rate')){
-        likeCounter += '           <b style="color: chocolate">Рейтинг:</b>   ' + review.rate;
+        likeCounter += '           <b style="color: chocolate">Рейтинг:</b>   ' + '<button id =“RANDOM_NUMBER” onclick=addLike(this.id)>❤️ 0</button>'
     }
 
     document.getElementsByClassName('reviews')[0].innerHTML += '    <div class="review-text">\n' +
@@ -85,4 +85,12 @@ function getReview(){
     this.name = prompt("Пожалуйста, введите ваше имя");
     this.comment = prompt("Введите коментарий");
     this.date = new Date().toLocaleString();
+}
+
+function addLike(id){
+    let text = document.getElementById(id).innerText;
+    let rate = 0;
+    rate   =Number(text.substring(2));
+    rate += 1;
+    document.getElementById(id).innerText = '❤️ ' + rate;
 }
