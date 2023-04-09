@@ -27,6 +27,25 @@ function handleSession(){
     session.startDate = Date().toLocaleString();
     session.age = checkAge();
 }
+
+function handsleSessionStorage(){
+
+    if (window.sessionStorage.getItem("Age") == null){
+        let age = prompt("Пожалуйста, введите ваш возраст?");
+        if (age >= 18) {
+            let startDate = new Date().toLocaleString();
+            alert("Приветствуем на LifeSpot! " + '\n' +  "Текущее время: " + startDate );
+        }
+        else{
+            alert("Наши трансляции не предназначены для лиц моложе 18 лет. ВыL будете перенаправлены");
+            window.location.href = "http://www.google.com"
+        }
+        window.sessionStorage.setItem("userAgent", window.navigator.userAgent);
+        window.sessionStorage.setItem("startDate", Date().toLocaleString());
+        window.sessionStorage.setItem("Age", age);
+    }
+}
+
 function checkAge(){
     let age = prompt("Пожалуйста, введите ваш возраст?");
     if (age >= 18) {
@@ -43,6 +62,12 @@ function sessionLog(){
     console.log(session.userAgent);
     console.log(session.age);
     console.log(session.startDate);
+}
+
+function sessionStorageLog(){
+    console.log(window.sessionStorage.getItem("userAgent"));
+    console.log(window.sessionStorage.getItem("Age"));
+    console.log(window.sessionStorage.getItem("startDate"));
 }
 
 //функция фильтрации контента
