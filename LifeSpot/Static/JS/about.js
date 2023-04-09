@@ -58,3 +58,31 @@ const postReview = review => {
         `<p>${review['comment']}</p>`  +
         '</div>';
 }
+
+function postCommnetByConstruct(){
+    let review = new getReview();
+
+    if ((review.name == null) || (review.comment == null)
+        || review.name == ""  || review.comment=="")
+    {
+        return ;
+    }
+    else{
+        console.log(review.date);
+    }
+    let likes = confirm('Разрешить пользователям оценивать ваш отзыв?')
+    if(likes){
+        let comment = Object.create(review)
+        comment.rate = 0;
+        postReview(comment)
+    } else{
+        postReview(review)
+    }
+}
+
+function getReview(){
+
+    this.name = prompt("Пожалуйста, введите ваше имя");
+    this.comment = prompt("Введите коментарий");
+    this.date = new Date().toLocaleString();
+}
