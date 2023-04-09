@@ -48,9 +48,9 @@ function addComment() {
 
 const postReview = review => {
     let likeCounter = '';
-
+    let commentId = Math.random();
     if(review.hasOwnProperty('rate')){
-        likeCounter += '           <b style="color: chocolate">Рейтинг:</b>   ' + '<button id =“RANDOM_NUMBER” onclick=addLike(this.id)>❤️ 0</button>'
+        likeCounter += '<button id="' + commentId + '" style="border: none" onclick="addLike(this.id)">' + `❤️ ${review.rate}</button>`
     }
 
     document.getElementsByClassName('reviews')[0].innerHTML += '    <div class="review-text">\n' +
